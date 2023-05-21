@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,30 +61,27 @@ namespace HosCsata.Models
             }
         }
 
-        public bool Csatazik()
+        public void Csatazik()
         {
             // A harcban résztvevő hősök életereje a felére csökken
             Eletero = Eletero / 2;
 
             // ha ez kisebb mint a kezdeti életerő negyede akkor meghalnak.
-            bool meghal = false;
             switch (Tipus)
             {
                 case HosTipus.Ijasz:
                     if (Eletero < (100/4))
-                        meghal = true;
+                        Eletero = 0;
                     break;
                 case HosTipus.Kardos:
                     if (Eletero < (120/4))
-                        meghal = true;
+                        Eletero = 0;
                     break;
                 case HosTipus.Lovas:
                     if (Eletero < (150/4))
-                        meghal = true;
+                        Eletero = 0;
                     break;
             }
-
-            return meghal;
         }
     }
 

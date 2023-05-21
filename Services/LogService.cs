@@ -35,10 +35,5 @@ namespace HosCsata.Services
                 }
             }
         }
-
-        public static void Separator()
-        {
-            Log("============");
-        }
     }
 }
