@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HosCsata": {
+      "commandName": "Project",
+      "commandLineArgs": "10"
+    }
+  }
+}
