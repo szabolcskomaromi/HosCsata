@@ -1,15 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-using HosCsata.Services;
-
-LogService.Log("========================");
-LogService.Log("");
-LogService.Log("Indul a csata");
+﻿using HosCsata.Services;
 
 // Hősök száma paraméter ellenőrzése
 if (Environment.GetCommandLineArgs().Length < 2)
 {
-    LogService.Log("Hiányzó paraméter: hősök száma");
+    LogService.Log("Hiányzó parancssori paraméter: hősök száma");
     LogService.Log("Vége.");
+    LogService.Log("");
     return;
 }
 
@@ -18,6 +14,7 @@ if (!int.TryParse(Environment.GetCommandLineArgs()[1], out hosokSzama))
 {
     LogService.Log("A hősök számának 2 és 100 közé kell esnie.");
     LogService.Log("Vége.");
+    LogService.Log("");
     return;
 }
 
@@ -25,8 +22,20 @@ if (hosokSzama < 2 || hosokSzama > 100)
 {
     LogService.Log("A hősök számának 2 és 100 közé kell esnie.");
     LogService.Log("Vége.");
+    LogService.Log("");
     return;
 }
+
+// Opcionális 2. paraméter: log fájl könyvtára
+if (Environment.GetCommandLineArgs().Length > 2)
+{
+    LogService.LogUtvonal(Environment.GetCommandLineArgs()[2]);
+}
+
+// Indul a csata
+LogService.Log("========================");
+LogService.Log("");
+LogService.Log("Indul a csata");
 
 LogService.Log("Hősök száma: " + hosokSzama.ToString());
 
@@ -55,7 +64,7 @@ while (hosok.Count > 1)
 
     LogService.Log(kor.ToString() + ". kör (" + hosok.Count.ToString() + " hős)");
 
-    var csata = new CsataService();
+    CsataService csata = new CsataService();
     int tamado = 0;
     int vedekezo = 0;
     // minden körbe véletlenszerűen kiválasztásra kerül egy támadó és egy védekező
